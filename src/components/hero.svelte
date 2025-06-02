@@ -56,11 +56,6 @@
 				text-align: center;
 			}
 
-			.hero-image {
-				margin: 20% auto 0;
-				align-self: center;
-			}
-
 			h1 {
 				font-size: 3rem;
 				margin-bottom: 3rem;
@@ -70,10 +65,6 @@
 				font-size: 1rem;
 				letter-spacing: 0rem;
 				margin-bottom: 3rem;
-			}
-
-			img {
-				width: 150px;
 			}
 
 			.btn {
