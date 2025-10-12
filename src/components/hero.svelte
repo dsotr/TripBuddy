@@ -11,7 +11,7 @@
 		width: 100vw;
 		height: 100vh;
 		background:
-			no-repeat url('/images/background-desktop.jpg') center/cover,
+			// no-repeat url('/images/background-desktop.jpg') center/cover,
 			var(--light-color);
 
 		.hero {
@@ -46,7 +46,7 @@
 		header {
 			/* background: no-repeat url("../images/background-desktop.jpg"), #333; */
 			background:
-				no-repeat url('/images/background-mobile.jpg') center/cover,
+				// no-repeat url('/images/background-mobile.jpg') center/cover,
 				var(--light-color);
 			background-size: cover;
 			background-position: bottom center;

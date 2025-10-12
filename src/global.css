@@ -10,10 +10,10 @@
 /* Variables  */
 :root {
 	--navbar-h: 56px;
-	--dark-color: #333;
-	--light-color: #fff2b5;
-	--primary-color: #ab22ba;
-	--secondary-color: #5097d3;
+	--dark-color: #333b2b;
+	--light-color: #9fcdd0;
+	--primary-color: #f4ef5c;
+	--secondary-color: #60adb1;
 }
 
 html,
