@@ -1,5 +1,6 @@
 <script>
 	import Hero from '../components/hero.svelte';
+	import Trip from '../components/trip.svelte';
 	let { data } = $props();
 	console.log(data);
 </script>
@@ -12,8 +13,9 @@
 <h1>Documents from Supabase</h1>
 
 <ul>
-	{#each data.trips as t}
-		<li>{t.name} - {t.destination} - {t.start_date} - {t.end_date}</li>
+	{#each data.trips as trip}
+		<Trip {trip} />
+		<!-- <li>{trip.name} - {trip.destination} - {trip.start_date} - {trip.end_date}</li> -->
 	{/each}
 </ul>
 
