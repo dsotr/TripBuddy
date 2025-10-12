@@ -27,13 +27,13 @@
 
 	.leisure {
 		background:
-			linear-gradient(110deg, var(--light-color) 60%, transparent 60%),
+			linear-gradient(110deg, var(--light-color) 50%, transparent 60%),
 			no-repeat url('/images/sea.png') center/cover,
 			var(--light-color);
 	}
 	.business {
 		background:
-			linear-gradient(110deg, var(--light-color) 60%, transparent 60%),
+			linear-gradient(110deg, var(--light-color) 50%, transparent 60%),
 			no-repeat url('/images/city.png') center/cover,
 			var(--light-color);
 	}
