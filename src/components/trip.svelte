@@ -3,17 +3,15 @@
 	let { trip } = $props();
 </script>
 
-<div class="container">
-	<div class="trip-card {trip.type}">
-		<h2>{trip.name}</h2>
-		<p><strong>Destination:</strong> {trip.destination}</p>
-		<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
-		{#if trip.type == 'leisure'}
-			<i class="fa-solid fa-umbrella-beach"></i>
-		{:else}
-			<i class="fa-solid fa-briefcase"></i>
-		{/if}
-	</div>
+<div class="trip-card {trip.type}">
+	<h2>{trip.name}</h2>
+	<p><strong>Destination:</strong> {trip.destination}</p>
+	<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
+	{#if trip.type == 'leisure'}
+		<i class="fa-solid fa-umbrella-beach"></i>
+	{:else}
+		<i class="fa-solid fa-briefcase"></i>
+	{/if}
 </div>
 
 <style>
