@@ -6,7 +6,7 @@
 	console.log(data);
 </script>
 
-<TripList trips={data.trips} />
+<TripList trips={data.trips} docs={data.docs} />
 
 <p>{data.docs.length} documents found</p>
 <ul>

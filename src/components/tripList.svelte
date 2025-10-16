@@ -1,13 +1,13 @@
 <script>
 	import Trip from '../components/trip.svelte';
 
-	let { trips } = $props();
+	let { trips, docs } = $props();
 </script>
 
 <div class="container">
 	<ul>
 		{#each trips as trip}
-			<Trip {trip} />
+			<Trip {trip} {docs} />
 			<!-- <li>{trip.name} - {trip.destination} - {trip.start_date} - {trip.end_date}</li> -->
 		{/each}
 	</ul>
