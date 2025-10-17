@@ -6,4 +6,69 @@
 	<h1>
 		Trip id {page.params.tripid}
 	</h1>
+
+	<form>
+		<label for="type">Type:</label>
+		<select id="type" name="type">
+			<option value="leisure">Leisure</option>
+			<option value="business">Business</option>
+		</select>
+
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" />
+
+		<label for="destination">Destination:</label>
+		<input type="text" id="destination" name="destination" />
+
+		<label for="start_date">Start Date:</label>
+		<input type="date" id="start_date" name="start_date" />
+
+		<label for="end_date">End Date:</label>
+		<input type="date" id="end_date" name="end_date" />
+
+		<button type="submit">Submit</button>
+	</form>
 </div>
+
+<style>
+	/* Add css for the form */
+	.container {
+		background-color: var(--light-color);
+		padding: 3rem;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 1rem;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		width: 60%;
+	}
+	button {
+		display: block;
+		margin-bottom: 0.5rem;
+		margin: 1rem 0 0 0;
+	}
+	label {
+		display: block;
+		margin: 1rem 0.1rem 0 0;
+		font-weight: bold;
+	}
+
+	select,
+	button,
+	input {
+		padding: 0.5rem;
+	}
+
+	input[type='date'],
+	select,
+	button {
+		width: fit-content;
+	}
+
+	button {
+		margin: 2rem 0 0 0;
+	}
+</style>
