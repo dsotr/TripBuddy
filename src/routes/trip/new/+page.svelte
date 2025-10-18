@@ -5,32 +5,26 @@
 </script>
 
 <div class="container">
-	<h1>
-		Trip id {page.params.tripid}
-	</h1>
+	<h1>New Trip</h1>
 
-	<form>
+	<form method="POST">
 		<label for="type">Type:</label>
 		<select id="type" name="type">
-			<option value="leisure" selected={data.trip.type == 'leisure' ? 'selected' : ''}
-				>Leisure</option
-			>
-			<option value="business" selected={data.trip.type == 'business' ? 'selected' : ''}
-				>Business</option
-			>
+			<option value="leisure">Leisure</option>
+			<option value="business">Business</option>
 		</select>
 
-		<label for="name">Name:</label>
-		<input type="text" id="name" name="name" value={data.trip.name} />
+		<label for="tripName">Trip name:</label>
+		<input type="text" id="tripName" name="tripName" />
 
 		<label for="destination">Destination:</label>
-		<input type="text" id="destination" name="destination" value={data.trip.destination} />
+		<input type="text" id="destination" name="destination" />
 
 		<label for="start_date">Start Date:</label>
-		<input type="date" id="start_date" name="start_date" value={data.trip.start_date} />
+		<input type="date" id="start_date" name="start_date" />
 
 		<label for="end_date">End Date:</label>
-		<input type="date" id="end_date" name="end_date" value={data.trip.end_date} />
+		<input type="date" id="end_date" name="end_date" />
 
 		<button type="submit">Submit</button>
 	</form>
