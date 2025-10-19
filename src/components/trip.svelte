@@ -3,20 +3,28 @@
 	import Documents from './documents.svelte';
 
 	let { trip, docs } = $props();
+
+	const del = async () => {
+		console.log('delete', trip.trip_id);
+		const response = await fetch('/api/deleteTrip/' + trip.trip_id);
+		const jsonResponse = await response.json();
+		console.log(jsonResponse);
+	};
 </script>
 
 <div class="trip-card {trip.type}">
 	<h2>{trip.name}</h2>
 	<div>
-		<p><strong>Destination:</strong> {trip.destination}</p>
-		<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
 		{#if trip.type == 'leisure'}
 			<i class="fa-solid fa-umbrella-beach"></i>
 		{:else}
 			<i class="fa-solid fa-briefcase"></i>
 		{/if}
+		<p><strong>Destination:</strong> {trip.destination}</p>
+		<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
 	</div>
 	<Documents {docs} />
+	<button on:click={del}><i class="fa-solid fa-trash"></i> Delete</button>
 </div>
 
 <style>

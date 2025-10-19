@@ -12,7 +12,7 @@
 		{/each}
 	</ul>
 
-	<a href="#" class="btn">New Trip</a>
+	<a href="/trip/new" class="btn">New Trip</a>
 </div>
 
 <style>
