@@ -3,9 +3,14 @@
 import { supabase } from '$lib/supabaseClient';
 import { json } from '@sveltejs/kit';
 
-export async function GET({ params }) {
+/**
+ * Delete a trip
+ * @param {tripId} tripId
+ * @returns Operation status code
+ */
+export async function DELETE({ params }) {
 	const { tripId } = params;
 	const tripsDELETEResponse = await supabase.from('trips').delete().eq('trip_id', tripId);
 
-	return json(tripsDELETEResponse);
+	return json(tripsDELETEResponse.status);
 }

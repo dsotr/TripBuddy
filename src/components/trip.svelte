@@ -4,9 +4,11 @@
 
 	let { trip, docs } = $props();
 
-	const del = async () => {
+	const deleteTrip = async () => {
 		console.log('delete', trip.trip_id);
-		const response = await fetch('/api/deleteTrip/' + trip.trip_id);
+		const response = await fetch('/api/trip/' + trip.trip_id, {
+			method: 'DELETE'
+		});
 		const jsonResponse = await response.json();
 		console.log(jsonResponse);
 	};
@@ -24,7 +26,7 @@
 		<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
 	</div>
 	<Documents {docs} />
-	<button on:click={del}><i class="fa-solid fa-trash"></i> Delete</button>
+	<button onclick={deleteTrip}><i class="fa-solid fa-trash"></i> Delete</button>
 </div>
 
 <style>
