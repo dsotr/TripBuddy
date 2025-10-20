@@ -17,11 +17,14 @@
 		<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
 	</div>
 	<Documents {docs} />
-	<button onclick={() => deleteTrip(trip.trip_id)}><i class="fa-solid fa-trash"></i> Delete</button>
+	<button aria-label="delete trip" onclick={() => deleteTrip(trip.trip_id)}
+		><i class="fa-solid fa-trash fa-xl"></i></button
+	>
 </div>
 
 <style>
 	.trip-card {
+		position: relative;
 		border: 1px solid #eee;
 		border-radius: 8px;
 		padding: 1rem;
@@ -49,5 +52,18 @@
 
 	.trip-card p {
 		margin-bottom: 0.5rem;
+	}
+
+	/* put the button in the top right garc corner */
+	button {
+		position: absolute;
+		right: 10px;
+		top: 15px;
+		padding: 8px;
+		border-radius: 8px;
+		background: rgba(0, 0, 0, 0.2);
+		border: none;
+		color: var(--light-color);
+		cursor: pointer;
 	}
 </style>
