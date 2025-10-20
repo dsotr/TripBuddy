@@ -6,8 +6,8 @@ import { supabase } from '$lib/supabaseClient';
 export async function load({ params }) {
 	// Esegui entrambe le richieste contemporaneamente
 	const [tripResponse, documentsResponse] = await Promise.all([
-		supabase.from('trips').select().eq('trip_id', params.tripid).single(),
-		supabase.from('documents').select().eq('trip_id', params.tripid)
+		supabase.from('trips').select().eq('trip_id', params.trip_id).single(),
+		supabase.from('documents').select().eq('trip_id', params.trip_id)
 	]);
 
 	return {

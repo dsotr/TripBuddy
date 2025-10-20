@@ -6,7 +6,7 @@
 
 <div class="container">
 	<h1>
-		Trip id {page.params.tripid}
+		Trip id {page.params.trip_id}
 	</h1>
 
 	<form>
