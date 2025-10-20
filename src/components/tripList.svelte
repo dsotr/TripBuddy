@@ -12,6 +12,7 @@
 			});
 			if (response.ok) {
 				trips = trips.filter((trip) => trip.trip_id !== trip_id);
+				console.log('Trip deleted:', response.status, response.statusText);
 			} else {
 				console.error('Unable to remove trip from DB:', response.status, response.statusText);
 			}

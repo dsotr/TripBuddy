@@ -10,7 +10,8 @@ import { json } from '@sveltejs/kit';
  */
 export async function DELETE({ params }) {
 	const { trip_id } = params;
+	console.log('Deleting trip id: ' + trip_id, params);
 	const tripsDELETEResponse = await supabase.from('trips').delete().eq('trip_id', trip_id);
-
-	return json(tripsDELETEResponse.status);
+	console.log(tripsDELETEResponse);
+	return json(tripsDELETEResponse);
 }
