@@ -3,6 +3,7 @@
 	import Documents from './documents.svelte';
 
 	let { deleteTrip, trip, docs } = $props();
+	docs = docs.filter((doc) => doc.trip_id === trip.trip_id);
 </script>
 
 <div class="trip-card {trip.type}">
