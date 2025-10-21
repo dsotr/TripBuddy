@@ -1,26 +1,45 @@
 <!-- Create an html card with trip details: name, destination, dates, business/leisure -->
 <script>
+	import { onMount } from 'svelte';
 	import Documents from './documents.svelte';
 
 	let { deleteTrip, trip, docs } = $props();
 	docs = docs.filter((doc) => doc.trip_id === trip.trip_id);
+
+	const getImageBase64 = async () => {
+		const { base64image } = await fetch('/api/destination/newyork');
+		console.log(base64image);
+	};
+
+	onMount(() => {
+		getImageBase64();
+	});
 </script>
 
 <div class="trip-card {trip.type}">
-	<h2>{trip.name}</h2>
-	<div>
-		{#if trip.type == 'leisure'}
-			<i class="fa-solid fa-umbrella-beach"></i>
-		{:else}
-			<i class="fa-solid fa-briefcase"></i>
-		{/if}
-		<p><strong>Destination:</strong> {trip.destination}</p>
-		<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
+	<div class="card-content">
+		<div class="card-image">
+			<img src="https://placehold.co/600x400/EEE/31343C" alt="placeholder" />
+		</div>
+		<div class="card-text">
+			<h2>
+				{#if trip.type == 'leisure'}
+					<i class="fa-solid fa-umbrella-beach"></i>
+				{:else}
+					<i class="fa-solid fa-briefcase"></i>
+				{/if}
+				{trip.name}
+			</h2>
+			<p><strong>Destination:</strong> {trip.destination}</p>
+			<p><strong>Dates:</strong> {trip.start_date} to {trip.end_date}</p>
+			<Documents {docs} />
+		</div>
+		<div class="card-action">
+			<button aria-label="delete trip" onclick={() => deleteTrip(trip.trip_id)}
+				><i class="fa-solid fa-trash fa-xl"></i></button
+			>
+		</div>
 	</div>
-	<Documents {docs} />
-	<button aria-label="delete trip" onclick={() => deleteTrip(trip.trip_id)}
-		><i class="fa-solid fa-trash fa-xl"></i></button
-	>
 </div>
 
 <style>
@@ -28,12 +47,43 @@
 		position: relative;
 		border: 1px solid #eee;
 		border-radius: 8px;
-		padding: 1rem;
+		padding: 0.5rem;
 		margin-bottom: 1rem;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		max-height: 25vh;
 	}
 
-	.leisure {
+	.card-content {
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	.card-image {
+		/* max-height: 20vh; */
+		max-height: 22vh;
+		aspect-ratio: 1 / 1;
+		object-fit: contain;
+		background-color: var(--light-color);
+		padding: 0.5rem;
+		border-radius: 1rem;
+	}
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		border-radius: 0.6rem;
+	}
+
+	.card-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		justify-content: space-between;
+	}
+
+	/* .leisure {
 		background:
 			linear-gradient(110deg, var(--light-color) 50%, transparent 60%),
 			no-repeat url('/images/sea.png') center/cover,
@@ -44,7 +94,7 @@
 			linear-gradient(110deg, var(--light-color) 50%, transparent 60%),
 			no-repeat url('/images/city.png') center/cover,
 			var(--light-color);
-	}
+	} */
 
 	.trip-card h2 {
 		margin-top: 0;
