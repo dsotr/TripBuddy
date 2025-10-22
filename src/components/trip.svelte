@@ -4,11 +4,13 @@
 	import Documents from './documents.svelte';
 
 	let { deleteTrip, trip, docs } = $props();
+	let imageSrc = $state('');
 	docs = docs.filter((doc) => doc.trip_id === trip.trip_id);
 
 	const getImageBase64 = async () => {
-		const { base64image } = await fetch('/api/destination/newyork');
-		console.log(base64image);
+		const { imageUrl } = await (await fetch('/api/destination/' + trip.destination)).json();
+		imageSrc = imageUrl;
+		return imageUrl;
 	};
 
 	onMount(() => {
@@ -19,7 +21,7 @@
 <div class="trip-card {trip.type}">
 	<div class="card-content">
 		<div class="card-image">
-			<img src="https://placehold.co/600x400/EEE/31343C" alt="placeholder" />
+			<img src={imageSrc} alt="placeholder" />
 		</div>
 		<div class="card-text">
 			<h2>

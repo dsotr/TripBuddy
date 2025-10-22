@@ -21,10 +21,20 @@
 		<input type="text" id="destination" name="destination" />
 
 		<label for="start_date">Start Date:</label>
-		<input type="date" id="start_date" name="start_date" />
+		<input
+			type="date"
+			id="start_date"
+			name="start_date"
+			value={new Date().toISOString().slice(0, 10)}
+		/>
 
 		<label for="end_date">End Date:</label>
-		<input type="date" id="end_date" name="end_date" />
+		<input
+			type="date"
+			id="end_date"
+			name="end_date"
+			value={new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().slice(0, 10)}
+		/>
 
 		<button type="submit">Submit</button>
 	</form>
