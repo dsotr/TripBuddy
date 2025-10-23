@@ -5,6 +5,7 @@ import { supabase } from '$lib/supabaseClient';
 export async function saveTrip(formData) {
 	console.log('saveTrip function.');
 	const tripId = formData.get('tripId');
+	const tripType = formData.get('type');
 	const tripName = formData.get('tripName');
 	const destination = formData.get('destination');
 	const startDate = formData.get('start_date');
@@ -20,6 +21,7 @@ export async function saveTrip(formData) {
 	const tripData = {
 		user_id: '2a54d608-d950-47ee-8f81-323a5cc2a31e',
 		name: tripName,
+		type: tripType,
 		destination: destination,
 		start_date: startDate,
 		end_date: endDate
