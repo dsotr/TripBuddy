@@ -9,7 +9,8 @@
 		Trip id {page.params.trip_id}
 	</h1>
 
-	<form>
+	<form method="POST">
+		<input type="text" name="tripId" value={page.params.trip_id} />
 		<label for="type">Type:</label>
 		<select id="type" name="type">
 			<option value="leisure" selected={data.trip.type == 'leisure' ? 'selected' : ''}
@@ -20,8 +21,8 @@
 			>
 		</select>
 
-		<label for="name">Name:</label>
-		<input type="text" id="name" name="name" value={data.trip.name} />
+		<label for="tripName">Name:</label>
+		<input type="text" id="tripName" name="tripName" value={data.trip.name} />
 
 		<label for="destination">Destination:</label>
 		<input type="text" id="destination" name="destination" value={data.trip.destination} />

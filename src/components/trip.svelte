@@ -39,6 +39,7 @@
 			<Documents {docs} />
 		</div>
 		<div class="card-action">
+			<a href="/trip/{trip.trip_id}" aria-label="update trip"><i class="fas fa-edit fa-xl"></i></a>
 			<button aria-label="delete trip" onclick={() => deleteTrip(trip.trip_id)}
 				><i class="fa-solid fa-trash fa-xl"></i></button
 			>
@@ -110,15 +111,23 @@
 	}
 
 	/* put the button in the top right garc corner */
-	button {
+	.card-action {
 		position: absolute;
 		right: 10px;
-		top: 15px;
-		padding: 8px;
+		top: 10px;
+		/* padding: 8px; */
 		border-radius: 8px;
-		background: rgba(0, 0, 0, 0.2);
+		/* background: rgba(0, 0, 0, 0.2); */
 		border: none;
 		color: var(--light-color);
 		cursor: pointer;
+
+		button,
+		a {
+			background: none;
+			color: var(--dark-color);
+			border: none;
+			cursor: pointer;
+		}
 	}
 </style>

@@ -1,7 +1,9 @@
 // src/routes/+page.server.js
+export const prerender = false;
 
 import { supabase } from '$lib/supabaseClient';
-// import { page } from '$app/state';
+import { saveTrip } from '$lib/server/tripsActions.js';
+import { redirect } from '@sveltejs/kit';
 
 export async function load({ params }) {
 	// Esegui entrambe le richieste contemporaneamente
@@ -17,3 +19,12 @@ export async function load({ params }) {
 		docs: documentsResponse.data ?? []
 	};
 }
+
+export const actions = {
+	default: async ({ request }) => {
+		console.log('updateTrip');
+		const formData = await request.formData();
+		await saveTrip(formData);
+		throw redirect(303, '/');
+	}
+};
