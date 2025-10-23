@@ -24,7 +24,7 @@ export async function GET({ params }) {
 
 	// If not in DB, fetch from Pixabay
 	console.log(`Image not found in DB for "${dest}". Fetching from Pixabay.`);
-	const pixabayUrl = `https://pixabay.com/api/?key=${PIXABAY_KEY}&q=${encodeURIComponent(dest)}&image_type=photo&safesearch=true&category=travel`;
+	const pixabayUrl = `https://pixabay.com/api/?key=${PIXABAY_KEY}&q=${encodeURIComponent(dest)}&image_type=photo&safesearch=true&category=travel&order=popular`;
 	const pixabayResponse = await fetch(pixabayUrl);
 
 	if (!pixabayResponse.ok) {
@@ -34,7 +34,7 @@ export async function GET({ params }) {
 
 	const pixabayData = await pixabayResponse.json();
 
-	const imageUrl = pixabayData.hits[0]?.webformatURL ?? null;
+	const imageUrl = pixabayData.hits[0]?.previewURL ?? null;
 
 	if (!imageUrl) {
 		throw svelteError(404, `No image found for destination: ${dest}`);

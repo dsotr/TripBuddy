@@ -69,8 +69,8 @@
 		aspect-ratio: 1 / 1;
 		object-fit: contain;
 		background-color: var(--light-color);
-		padding: 0.5rem;
-		border-radius: 1rem;
+		border-radius: 0.8rem;
+		border: 4px solid white;
 	}
 
 	img {
