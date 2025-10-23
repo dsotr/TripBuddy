@@ -20,12 +20,21 @@
 			console.error('Unable to remove trip from DB:', error);
 		}
 	};
+
+	const updateTrip = async (trip) => {
+		console.log('update', trip);
+		trips.array.forEach((element) => {
+			if (element.trip_id === trip.trip_id) {
+				element = trip;
+			}
+		});
+	};
 </script>
 
 <div class="container">
 	<ul>
 		{#each trips as trip}
-			<Trip {deleteTrip} {trip} {docs} />
+			<Trip {updateTrip} {deleteTrip} {trip} {docs} />
 			<!-- <li>{trip.name} - {trip.destination} - {trip.start_date} - {trip.end_date}</li> -->
 		{/each}
 	</ul>
