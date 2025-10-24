@@ -42,6 +42,31 @@ export async function GET({ params }) {
 
 	console.log(imageUrl);
 	// Here you could save the imageUrl to your Supabase 'destinations' table for caching.
+	uploadImage(imageUrl, dest);
 
 	return json({ imageUrl: imageUrl });
 }
+
+const uploadImage = async (imageUrl, dest) => {
+	console.log('Uploading image to Supabase...');
+	try {
+		const response = await fetch(imageUrl);
+		const imageBlob = await response.blob();
+		console.log(response.status);
+		// store the image file to the database
+		const fileName = dest.toLowerCase() + '.jpg';
+
+		let { data, error } = await supabase.storage.from('destinations').upload(fileName, imageBlob, {
+			cacheControl: 60 * 60 * 24 * 365, // 1 year
+			upsert: false
+		});
+		console.log(data, error);
+		({ data, error } = await supabase.from('destinations').insert({
+			name: fileName,
+			image: data.fullPath
+		}));
+		if (error) console.log(error);
+	} catch (error) {
+		console.log('Unable to save image to database', imageUrl, error);
+	}
+};
