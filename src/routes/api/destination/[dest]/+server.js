@@ -15,7 +15,8 @@ export async function GET({ params }) {
 	const { data, error } = await supabase
 		.from('destinations')
 		.select()
-		.eq('name', dest.toLowerCase());
+		.eq('name', dest.toLowerCase())
+		.single();
 
 	if (data?.image) {
 		console.log('Found image in DB:', data.image);
@@ -61,9 +62,13 @@ const uploadImage = async (imageUrl, dest) => {
 			upsert: false
 		});
 		console.log(data, error);
+
+		const imagePublicUrl = supabase.storage.from('destinations').getPublicUrl(data.path);
+		console.log(imagePublicUrl.data.publicUrl);
+
 		({ data, error } = await supabase.from('destinations').insert({
-			name: fileName,
-			image: data.fullPath
+			name: dest.toLowerCase(),
+			image: imagePublicUrl.data.publicUrl
 		}));
 		if (error) console.log(error);
 	} catch (error) {
