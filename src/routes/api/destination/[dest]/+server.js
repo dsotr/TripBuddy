@@ -41,7 +41,7 @@ export async function GET({ params }) {
 		throw svelteError(404, `No image found for destination: ${dest}`);
 	}
 
-	console.log(imageUrl);
+	console.log('Uploading image:', imageUrl);
 	// Here you could save the imageUrl to your Supabase 'destinations' table for caching.
 	uploadImage(imageUrl, dest);
 

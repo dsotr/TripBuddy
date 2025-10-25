@@ -7,7 +7,7 @@
 	let imageSrc = $state('');
 	docs = docs.filter((doc) => doc.trip_id === trip.trip_id);
 
-	const getImageBase64 = async () => {
+	const getImage = async () => {
 		const { imageUrl } = await (await fetch('/api/destination/' + trip.destination)).json();
 		imageSrc = imageUrl;
 		trip.image = imageUrl;
@@ -16,7 +16,7 @@
 	};
 
 	onMount(() => {
-		getImageBase64();
+		getImage();
 	});
 </script>
 
