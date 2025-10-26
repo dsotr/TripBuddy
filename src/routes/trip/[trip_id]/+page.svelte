@@ -34,6 +34,7 @@
 		<input type="date" id="end_date" name="end_date" value={data.trip.end_date} />
 
 		<button type="submit">Submit</button>
+		<a href="/document/{page.params.trip_id}/new">Add document</a>
 	</form>
 </div>
 
