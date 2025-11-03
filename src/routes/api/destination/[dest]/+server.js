@@ -49,22 +49,23 @@ export async function GET({ params }) {
 }
 
 const uploadImage = async (imageUrl, dest) => {
-	console.log('Uploading image to Supabase...');
+	console.log('[uploadImage] Uploading image to Supabase...');
 	try {
 		const response = await fetch(imageUrl);
 		const imageBlob = await response.blob();
 		console.log(response.status);
 		// store the image file to the database
 		const fileName = dest.toLowerCase() + '.jpg';
-
+		console.log('[uploadImage] access supabase destination table');
 		let { data, error } = await supabase.storage.from('destinations').upload(fileName, imageBlob, {
 			cacheControl: 60 * 60 * 24 * 365, // 1 year
 			upsert: false
 		});
-		console.log(data, error);
+		console.log('[uploadImage] data:', data);
+		console.log('[uploadImage] error:', error);
 
 		const imagePublicUrl = supabase.storage.from('destinations').getPublicUrl(data.path);
-		console.log(imagePublicUrl.data.publicUrl);
+		console.log('[uploadImage] ', imagePublicUrl.data.publicUrl);
 
 		({ data, error } = await supabase.from('destinations').insert({
 			name: dest.toLowerCase(),
