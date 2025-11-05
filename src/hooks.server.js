@@ -1,9 +1,9 @@
 // src/hooks.server.ts
-import { VITE_SUPABASE_URL, VITE_SUPABASE_KEY } from '$env/static/private';
+import { PUBLIC_VITE_SUPABASE_URL, PUBLIC_VITE_SUPABASE_KEY } from '$env/static/public';
 import { createServerClient } from '@supabase/ssr';
 
 export const handle = async ({ event, resolve }) => {
-	event.locals.supabase = createServerClient(VITE_SUPABASE_URL, VITE_SUPABASE_KEY, {
+	event.locals.supabase = createServerClient(PUBLIC_VITE_SUPABASE_URL, PUBLIC_VITE_SUPABASE_KEY, {
 		cookies: {
 			getAll: () => event.cookies.getAll(),
 			/**

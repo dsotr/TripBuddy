@@ -1,8 +1,9 @@
 // src/routes/+page.server.js
 
-import { supabase } from '$lib/supabaseClient';
+// import { supabase } from '$lib/supabaseClient';
 
-export async function load() {
+export async function load(param) {
+	console.log(param);
 	// Esegui entrambe le richieste contemporaneamente
 	const [tripsResponse, documentsResponse] = await Promise.all([
 		supabase.from('trips').select().order('start_date', { ascending: true }),
